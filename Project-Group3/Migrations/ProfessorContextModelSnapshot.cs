@@ -4,16 +4,14 @@ using Group3.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Project_Group3.Migrations
 {
-    [DbContext(typeof(UserContext))]
-    [Migration("20220327073555_ProfessorTable")]
-    partial class ProfessorTable
+    [DbContext(typeof(ProfessorContext))]
+    partial class ProfessorContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +19,7 @@ namespace Project_Group3.Migrations
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Group3.Entities.User", b =>
+            modelBuilder.Entity("Group3.Entities.Professor", b =>
                 {
                     b.Property<Guid>("UsuarioId")
                         .ValueGeneratedOnAdd()
@@ -57,12 +55,17 @@ namespace Project_Group3.Migrations
                     b.Property<string>("Ocupacao")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ProfessorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<string>("Senha")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UsuarioId");
 
-                    b.ToTable("User");
+                    b.ToTable("Professor");
                 });
 #pragma warning restore 612, 618
         }

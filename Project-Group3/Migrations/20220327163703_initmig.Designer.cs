@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Project_Group3.Migrations
 {
-    [DbContext(typeof(UserContext))]
-    [Migration("20220327073709_StudentTable")]
-    partial class StudentTable
+    [DbContext(typeof(ProfessorContext))]
+    [Migration("20220327163703_initmig")]
+    partial class initmig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace Project_Group3.Migrations
                 .HasAnnotation("ProductVersion", "5.0.11")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Group3.Entities.User", b =>
+            modelBuilder.Entity("Group3.Entities.Professor", b =>
                 {
                     b.Property<Guid>("UsuarioId")
                         .ValueGeneratedOnAdd()
@@ -57,12 +57,17 @@ namespace Project_Group3.Migrations
                     b.Property<string>("Ocupacao")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ProfessorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<string>("Senha")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UsuarioId");
 
-                    b.ToTable("User");
+                    b.ToTable("Professor");
                 });
 #pragma warning restore 612, 618
         }

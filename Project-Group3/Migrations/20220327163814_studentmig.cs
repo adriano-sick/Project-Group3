@@ -1,17 +1,19 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 namespace Project_Group3.Migrations
 {
-    public partial class ProfessorTable : Migration
+    public partial class studentmig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Professor",
+                name: "Student",
                 columns: table => new
                 {
                     UsuarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    StudentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Senha = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -26,13 +28,13 @@ namespace Project_Group3.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Profesor", x => x.UsuarioId);
+                    table.PrimaryKey("PK_Student", x => x.UsuarioId);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            
+
         }
     }
 }

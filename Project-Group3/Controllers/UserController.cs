@@ -23,10 +23,11 @@ namespace Group3.Controllers
 
         // GET: /User
         [HttpGet]
-        public List<Student> GetStudentContexts()
+        public Tuple<List<Student>, List<Professor>> GetStudentContexts()
         {
             var studentList = _studentServices.GetStudent();
-            return studentList;
+            var professorList = _professorService.GetProfessor();
+            return new Tuple<List<Student>, List<Professor>>(studentList, professorList);
         }
 
         [HttpPost]
