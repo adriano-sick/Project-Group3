@@ -8,24 +8,24 @@ namespace Group3.Repository
 {
     public class StudentRepository
     {
-        private readonly StudentContext _studentContext;
+        private readonly EntitiesContext _entitiesContext;
 
         public StudentRepository()
         {
-            _studentContext = new StudentContext();
+            _entitiesContext = new EntitiesContext();
         }
 
         public List<Student> GetStudents()
         {
-            return _studentContext.Student.ToList();
+            return _entitiesContext.Student.ToList();
         }
 
         public async Task<Student> AddStudent(Student student)
         {
             try
             {
-                var result = await _studentContext.AddAsync(student);
-                await _studentContext.SaveChangesAsync();
+                var result = await _entitiesContext.AddAsync(student);
+                await _entitiesContext.SaveChangesAsync();
 
                 return result.Entity;
             }
@@ -40,8 +40,8 @@ namespace Group3.Repository
         {
             try
             {
-                var result = _studentContext.Update(student);
-                await _studentContext.SaveChangesAsync();
+                var result = _entitiesContext.Update(student);
+                await _entitiesContext.SaveChangesAsync();
                 return result.Entity;
             }
             catch(Exception e)
@@ -51,11 +51,11 @@ namespace Group3.Repository
             }
         }
 
-        public Student DeleteStudent(Guid UsuarioId)
+        public Student DeleteStudent(int UsuarioId)
         {
-            var studentDel = _studentContext.Student.FirstOrDefault(a => a.UsuarioId == UsuarioId);
-            _studentContext.Remove(studentDel);
-            _studentContext.SaveChangesAsync();
+            var studentDel = _entitiesContext.Student.FirstOrDefault(a => a.UsuarioId == UsuarioId);
+            _entitiesContext.Remove(studentDel);
+            _entitiesContext.SaveChangesAsync();
             return studentDel;
         }
     }

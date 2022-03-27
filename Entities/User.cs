@@ -8,7 +8,7 @@ namespace Group3.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid UsuarioId { get; set; }
+        public int UsuarioId { get; set; }
         public string Nome { get; set; }
         public string Senha { get; set; }
         public string Email { get; set; }

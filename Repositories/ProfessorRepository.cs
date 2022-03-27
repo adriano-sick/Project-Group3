@@ -8,24 +8,24 @@ namespace Group3.Repository
 {
     public class ProfessorRepository
     {
-        private readonly ProfessorContext _professorContext;
+        private readonly EntitiesContext _entitiesContext;
 
         public ProfessorRepository()
         {
-            _professorContext = new ProfessorContext();
+            _entitiesContext = new EntitiesContext();
         }
 
         public List<Professor> GetProfessors()
         {
-            return _professorContext.Professor.ToList();
+            return _entitiesContext.Professor.ToList();
         }
 
         public async Task<Professor> AddProfessor(Professor professor)
         {
             try
             {
-                var result = await _professorContext.AddAsync(professor);
-                await _professorContext.SaveChangesAsync();
+                var result = await _entitiesContext.AddAsync(professor);
+                await _entitiesContext.SaveChangesAsync();
 
                 return result.Entity;
             }
@@ -40,8 +40,8 @@ namespace Group3.Repository
         {
             try
             {
-                var result = _professorContext.Update(professor);
-                await _professorContext.SaveChangesAsync();
+                var result = _entitiesContext.Update(professor);
+                await _entitiesContext.SaveChangesAsync();
                 return result.Entity;
             }
             catch(Exception e)
@@ -51,11 +51,11 @@ namespace Group3.Repository
             }
         }
 
-        public Professor DeleteProfessor(Guid UsuarioId)
+        public Professor DeleteProfessor(int ProfessorId)
         {
-            var professorDel = _professorContext.Professor.FirstOrDefault(a => a.UsuarioId == UsuarioId);
-            _professorContext.Remove(professorDel);
-            _professorContext.SaveChangesAsync();
+            var professorDel = _entitiesContext.Professor.FirstOrDefault(a => a.ProfessorId == ProfessorId);
+            _entitiesContext.Remove(professorDel);
+            _entitiesContext.SaveChangesAsync();
             return professorDel;
         }
     }
