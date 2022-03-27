@@ -57,10 +57,9 @@ namespace Group3.Controllers
             }
         }
 
-
         // DELETE:
         [HttpDelete("{UsuarioId}")]
-        public async Task<IActionResult> DeleteStudent(Guid UsuarioId)
+        public IActionResult DeleteStudent(int UsuarioId)
         {
             if (UserExists(UsuarioId))
             {
@@ -73,7 +72,7 @@ namespace Group3.Controllers
             }
         }
 
-        private bool UserExists(Guid id)
+        private bool UserExists(int id)
         {
             return _studentServices.GetStudent().Any(e => e.UsuarioId == id);
         }

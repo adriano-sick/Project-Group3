@@ -32,7 +32,7 @@ namespace Group3.Controllers
         [HttpPost]
         public async Task<ActionResult<Professor>> PostProfessor(Professor professor)
         {
-            if (!UserExists(professor.UsuarioId))
+            if (!UserExists(professor.ProfessorId))
             {
                 return await _professorServices.AddProfessor(professor);
             }
@@ -60,7 +60,7 @@ namespace Group3.Controllers
 
         // DELETE:
         [HttpDelete("{UsuarioId}")]
-        public async Task<IActionResult> DeleteProfessor(Guid UsuarioId)
+        public IActionResult DeleteProfessor(int UsuarioId)
         {
             if (UserExists(UsuarioId))
             {
@@ -73,9 +73,9 @@ namespace Group3.Controllers
             }
         }
 
-        private bool UserExists(Guid id)
+        private bool UserExists(int id)
         {
-            return _professorServices.GetProfessor().Any(e => e.UsuarioId == id);
+            return _professorServices.GetProfessor().Any(e => e.ProfessorId == id);
         }
     }
 }
