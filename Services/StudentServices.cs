@@ -38,9 +38,9 @@ namespace Group3.Services
             return await _studentRepository.UpdateStudent(student);
         }
 
-        public Student DeleteStudent(int UsuarioId)
-        {
-            return _studentRepository.DeleteStudent(UsuarioId);
+        public Student DeleteStudent(Guid studentId)
+        { 
+            return _studentRepository.DeleteStudent(studentId);
         }
     }
 }

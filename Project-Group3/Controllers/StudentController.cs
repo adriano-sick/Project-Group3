@@ -32,7 +32,7 @@ namespace Group3.Controllers
         [HttpPost]
         public async Task<ActionResult<Student>> PostStudent(Student Student)
         {
-            if (!UserExists(Student.UsuarioId))
+            if (!UserExists(Student.StudentId))
             {
                 return await _studentServices.AddStudent(Student);
             }

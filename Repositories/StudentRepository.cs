@@ -51,9 +51,9 @@ namespace Group3.Repository
             }
         }
 
-        public Student DeleteStudent(int UsuarioId)
+        public Student DeleteStudent(Guid studentId)
         {
-            var studentDel = _entitiesContext.Student.FirstOrDefault(a => a.UsuarioId == UsuarioId);
+            var studentDel = _entitiesContext.Student.FirstOrDefault(a => a.StudentId == studentId);
             _entitiesContext.Remove(studentDel);
             _entitiesContext.SaveChangesAsync();
             return studentDel;
