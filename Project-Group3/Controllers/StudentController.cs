@@ -44,7 +44,7 @@ namespace Group3.Controllers
 
         // PUT: /Student
         [HttpPut("{StudentId}")]
-        public async Task<IActionResult> PutStudent(int StudentId, Student student)
+        public async Task<IActionResult> PutStudent(Guid StudentId, Student student)
         {
             if (StudentId != student.StudentId)
             {

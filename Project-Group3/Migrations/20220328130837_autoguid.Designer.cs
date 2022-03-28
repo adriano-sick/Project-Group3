@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Project_Group3.Migrations
 {
     [DbContext(typeof(EntitiesContext))]
-    [Migration("20220327195752_FullMigration")]
-    partial class FullMigration
+    [Migration("20220328130837_autoguid")]
+    partial class autoguid
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -185,8 +185,8 @@ namespace Project_Group3.Migrations
                 {
                     b.HasBaseType("Group3.Entities.User");
 
-                    b.Property<int>("ProfessorId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ProfessorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasDiscriminator().HasValue("Professor");
                 });
@@ -195,8 +195,8 @@ namespace Project_Group3.Migrations
                 {
                     b.HasBaseType("Group3.Entities.User");
 
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasDiscriminator().HasValue("Student");
                 });
@@ -253,28 +253,6 @@ namespace Project_Group3.Migrations
                     b.Navigation("Discipline");
 
                     b.Navigation("Student");
-                });
-
-            modelBuilder.Entity("Group3.Entities.Professor", b =>
-                {
-                    b.HasOne("Group3.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Group3.Entities.Student", b =>
-                {
-                    b.HasOne("Group3.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }

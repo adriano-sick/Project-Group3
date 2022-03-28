@@ -44,7 +44,7 @@ namespace Group3.Controllers
 
         // PUT: /Professor
         [HttpPut("{ProfessorId}")]
-        public async Task<IActionResult> PutProfessor(int ProfessorId, Professor professor)
+        public async Task<IActionResult> PutProfessor(Guid ProfessorId, Professor professor)
         {
             if (ProfessorId != professor.ProfessorId)
             {
@@ -60,7 +60,7 @@ namespace Group3.Controllers
 
         // DELETE:
         [HttpDelete("{UsuarioId}")]
-        public IActionResult DeleteProfessor(int UsuarioId)
+        public IActionResult DeleteProfessor(Guid UsuarioId)
         {
             if (UserExists(UsuarioId))
             {
@@ -73,7 +73,7 @@ namespace Group3.Controllers
             }
         }
 
-        private bool UserExists(int id)
+        private bool UserExists(Guid id)
         {
             return _professorServices.GetProfessor().Any(e => e.ProfessorId == id);
         }

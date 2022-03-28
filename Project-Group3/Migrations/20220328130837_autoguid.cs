@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Project_Group3.Migrations
 {
-    public partial class FullMigration : Migration
+    public partial class autoguid : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,8 +25,8 @@ namespace Project_Group3.Migrations
                     Cep = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Ocupacao = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProfessorId = table.Column<int>(type: "int", nullable: true),
-                    StudentId = table.Column<int>(type: "int", nullable: true)
+                    ProfessorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    StudentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
