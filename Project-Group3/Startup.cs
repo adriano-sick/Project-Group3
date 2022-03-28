@@ -28,9 +28,9 @@ namespace Project_Group3
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Project_Group3", Version = "v1" });
             });
 
-            services.AddDbContext<EntitiesContext>(item => item.UseSqlServer(
-                Configuration.GetConnectionString("StudentConnection"),
-                b => b.MigrationsAssembly("Project-Group3")));
+            //services.AddDbContext<EntitiesContext>(item => item.UseSqlServer(
+            //    Configuration.GetConnectionString("StudentConnection"),
+            //    b => b.MigrationsAssembly("Project-Group3")));
 
             //services.AddDbContext<UserContext>(options => options.UseSqlServer(Configuration.GetConnectionString("StudentConnection")));
         }

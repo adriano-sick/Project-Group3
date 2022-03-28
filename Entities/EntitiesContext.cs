@@ -14,7 +14,8 @@ namespace Group3.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=Group03.mssql.somee.com; Database=Group03; User Id=adrianosiqueira_SQLLogin_1; Password=j1fzzgtol5;");
+            //optionsBuilder.UseSqlServer("Server=Group03.mssql.somee.com; Database=Group03; User Id=adrianosiqueira_SQLLogin_1; Password=j1fzzgtol5;");
+            optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("Production"));
         }
         public DbSet<Avaliacao> Avaliacao { get; set; }
         public DbSet<Discipline> Discipline { get; set; }
