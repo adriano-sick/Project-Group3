@@ -94,12 +94,153 @@ namespace Services
 
         }
 
+        public async Task<User> UpdateUser(User User)
+        {
+            if (User.Ocupacao == "student")
+            {
+                Student Student = new()
+                {
+                    Nome = User.Nome,
+                    Senha = User.Senha,
+                    Email = User.Email,
+                    DataNasc = User.DataNasc,
+                    Endereco = User.Endereco,
+                    Numero = User.Numero,
+                    Bairro = User.Bairro,
+                    Cidade = User.Cidade,
+                    Estado = User.Estado,
+                    Cep = User.Cep,
+                    Ocupacao = User.Ocupacao
+                };
 
+                if (!UserExists(User.UsuarioId))
+                {
+                    return await _studentServices.UpdateStudent(Student);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else if (User.Ocupacao == "professor")
+            {
+                Professor Professor = new()
+                {
+                    Nome = User.Nome,
+                    Senha = User.Senha,
+                    Email = User.Email,
+                    DataNasc = User.DataNasc,
+                    Endereco = User.Endereco,
+                    Numero = User.Numero,
+                    Bairro = User.Bairro,
+                    Cidade = User.Cidade,
+                    Estado = User.Estado,
+                    Cep = User.Cep,
+                    Ocupacao = User.Ocupacao
+                };
 
+                if (!UserExists(User.UsuarioId))
+                {
+                    return await _professorService.UpdateProfessor(Professor);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public User DeleteUser(int UserId)
+        {
+
+            User User = GetById(UserId);
+
+            if (User.Ocupacao == "student")
+            {
+                Student Student = new()
+                {
+                    Nome = User.Nome,
+                    Senha = User.Senha,
+                    Email = User.Email,
+                    DataNasc = User.DataNasc,
+                    Endereco = User.Endereco,
+                    Numero = User.Numero,
+                    Bairro = User.Bairro,
+                    Cidade = User.Cidade,
+                    Estado = User.Estado,
+                    Cep = User.Cep,
+                    Ocupacao = User.Ocupacao
+                };
+
+                if (!UserExists(User.UsuarioId))
+                {
+                    return _studentServices.DeleteStudent(Student.StudentId);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else if (User.Ocupacao == "professor")
+            {
+                Professor Professor = new()
+                {
+                    Nome = User.Nome,
+                    Senha = User.Senha,
+                    Email = User.Email,
+                    DataNasc = User.DataNasc,
+                    Endereco = User.Endereco,
+                    Numero = User.Numero,
+                    Bairro = User.Bairro,
+                    Cidade = User.Cidade,
+                    Estado = User.Estado,
+                    Cep = User.Cep,
+                    Ocupacao = User.Ocupacao
+                };
+
+                if (!UserExists(User.UsuarioId))
+                {
+                    return _professorService.DeleteProfessor(Professor.ProfessorId);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         private bool UserExists(int id)
         {
             return _studentServices.GetStudent().Any(e => e.UsuarioId == id);
+        }
+
+        private User GetById(int userId)
+        {
+            foreach (User user in GetUsers().Item1)
+            {
+                if(user.UsuarioId == userId)
+                {
+                    return user;
+                }
+            }
+            
+            foreach (User user in GetUsers().Item2)
+            {
+                if(user.UsuarioId == userId)
+                {
+                    return user;
+                }
+            }
+
+            return null;
         }
     }
 }

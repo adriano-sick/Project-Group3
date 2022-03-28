@@ -32,5 +32,16 @@ namespace Services
         {
             return await _disciplineRepository.AddDiscipline(discipline);
         }
+
+        public async Task<Discipline> UpdateDiscipline(Discipline discipline)
+        {
+            return await _disciplineRepository.UpdateDiscipline(discipline);
+        }
+
+        public Discipline DeleteDiscipline(int DisciplinaId)
+        {
+            return _disciplineRepository.DeleteDiscipline(DisciplinaId);
+        }
     }
 }
+

@@ -32,6 +32,16 @@ namespace Services
         {
             return await _avaliacaoRepository.AddAvaliacao(avaliacao);
         }
+
+        public async Task<Avaliacao> UpdateAvaliacao(Avaliacao avaliacao)
+        {
+            return await _avaliacaoRepository.UpdateAvaliacao(avaliacao);
+        }
+
+        public Avaliacao DeleteAvaliacao(int AvaliacaoId)
+        {
+            return _avaliacaoRepository.DeleteAvaliacao(AvaliacaoId);
+        }
     }
 }
 

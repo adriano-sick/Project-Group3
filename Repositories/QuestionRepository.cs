@@ -36,5 +36,28 @@ namespace Repositories
                 return null;
             }
         }
+
+        public async Task<Question> UpdateQuestion(Question question)
+        {
+            try
+            {
+                var result = _entitiesContext.Update(question);
+                await _entitiesContext.SaveChangesAsync();
+                return result.Entity;
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine("Error while updating changes: " + e);
+                return null;
+            }
+        }
+
+        public Question DeleteQuestion(int questionId)
+        {
+            var questionDel = _entitiesContext.Question.FirstOrDefault(a => a.QuestionId == questionId);
+            _entitiesContext.Remove(questionDel);
+            _entitiesContext.SaveChangesAsync();
+            return questionDel;
+        }
     }
 }

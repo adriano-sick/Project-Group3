@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Project_Group3.Controllers
@@ -25,11 +26,47 @@ namespace Project_Group3.Controllers
             return _disciplineServices.GetDisciplines();
         }
 
-        //GET: /Discipline
+        //POST: /Discipline
         [HttpPost]
         public async Task<ActionResult<Discipline>> PostUser(Discipline discipline)
         {
             return await _disciplineServices.AddDiscipline(discipline);
+        }
+
+        // PUT: /Discipline/DisciplineId
+        [HttpPut("{DisciplineId}")]
+        public async Task<IActionResult> PutDiscipline(int DisciplinaId, Discipline discipline)
+        {
+            if (DisciplinaId != discipline.DisciplinaId)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                await _disciplineServices.UpdateDiscipline(discipline);
+                return Ok();
+            }
+        }
+
+
+        // DELETE: /Discipline/DisciplineId
+        [HttpDelete("{DisciplineId}")]
+        public IActionResult DeleteDiscipline(int DisciplinaId)
+        {
+            if (DisciplineExists(DisciplinaId))
+            {
+                _disciplineServices.DeleteDiscipline(DisciplinaId);
+                return NoContent();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        private bool DisciplineExists(int id)
+        {
+            return _disciplineServices.GetDisciplines().Any(e => e.DisciplinaId == id);
         }
     }
 }
