@@ -6,9 +6,6 @@ namespace Group3.Entities
 {
     public class Student : User
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int StudentId { get; set; }
-        [ForeignKey("UsuarioId")]
-        public User User { get; set; }
+        public Guid StudentId { get; set; } = Guid.NewGuid();
     }
 }

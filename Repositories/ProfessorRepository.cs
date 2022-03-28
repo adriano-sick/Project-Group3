@@ -51,7 +51,7 @@ namespace Group3.Repository
             }
         }
 
-        public Professor DeleteProfessor(int ProfessorId)
+        public Professor DeleteProfessor(Guid ProfessorId)
         {
             var professorDel = _entitiesContext.Professor.FirstOrDefault(a => a.ProfessorId == ProfessorId);
             _entitiesContext.Remove(professorDel);
