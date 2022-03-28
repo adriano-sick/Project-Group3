@@ -9,10 +9,7 @@ namespace Group3.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int QuestionId { get; set; }
         public string QuestionEnunciado { get; set; }
-        public string QuestionIncorreta1 { get; set; }
-        public string QuestionIncorreta2 { get; set; }
-        public string QuestionIncorreta3 { get; set; }
-        public string QuestionCorreta { get; set; }
+        public bool QuestionCorreta { get; set; }
         [ForeignKey("AvaliacaoId")]
         public Avaliacao Avaliacao { get; set; }
 
