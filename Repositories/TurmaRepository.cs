@@ -36,5 +36,28 @@ namespace Repositories
                 return null;
             }
         }
+
+        public async Task<Turma> UpdateTurma(Turma turma)
+        {
+            try
+            {
+                var result = _entitiesContext.Update(turma);
+                await _entitiesContext.SaveChangesAsync();
+                return result.Entity;
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine("Error while updating changes: " + e);
+                return null;
+            }
+        }
+
+        public Turma DeleteTurma(int turmaId)
+        {
+            var turmaDel = _entitiesContext.Turma.FirstOrDefault(a => a.TurmaId == turmaId);
+            _entitiesContext.Remove(turmaDel);
+            _entitiesContext.SaveChangesAsync();
+            return turmaDel;
+        }
     }
 }

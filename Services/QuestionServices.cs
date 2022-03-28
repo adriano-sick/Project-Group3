@@ -32,5 +32,15 @@ namespace Services
         {
             return await _questionRepository.AddQuestion(question);
         }
+
+        public async Task<Question> UpdateQuestion(Question question)
+        {
+            return await _questionRepository.UpdateQuestion(question);
+        }
+
+        public Question DeleteQuestion(int QuestionId)
+        {
+            return _questionRepository.DeleteQuestion(QuestionId);
+        }
     }
 }

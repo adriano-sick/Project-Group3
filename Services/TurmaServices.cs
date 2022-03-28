@@ -30,9 +30,19 @@ namespace Services
             }
         }
 
-        public async Task<Turma> AddAvaliacao(Turma turma)
+        public async Task<Turma> AddTurma(Turma turma)
         {
             return await _turmaRepository.AddTurma(turma);
+        }
+
+        public async Task<Turma> UpdateTurma(Turma turma)
+        {
+            return await _turmaRepository.UpdateTurma(turma);
+        }
+
+        public Turma DeleteTurma(int turmaId)
+        {
+            return _turmaRepository.DeleteTurma(turmaId);
         }
     }
 }

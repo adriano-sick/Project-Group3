@@ -36,5 +36,28 @@ namespace Repositories
                 return null;
             }
         }
+
+        public async Task<Discipline> UpdateDiscipline(Discipline discipline)
+        {
+            try
+            {
+                var result = _entitiesContext.Update(discipline);
+                await _entitiesContext.SaveChangesAsync();
+                return result.Entity;
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine("Error while updating changes: " + e);
+                return null;
+            }
+        }
+
+        public Discipline DeleteDiscipline(int DisciplinaId)
+        {
+            var disciplineDel = _entitiesContext.Discipline.FirstOrDefault(a => a.DisciplinaId == DisciplinaId);
+            _entitiesContext.Remove(disciplineDel);
+            _entitiesContext.SaveChangesAsync();
+            return disciplineDel;
+        }
     }
 }
