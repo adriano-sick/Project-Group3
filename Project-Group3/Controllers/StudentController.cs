@@ -58,12 +58,12 @@ namespace Group3.Controllers
         }
 
         // DELETE:
-        [HttpDelete("{UsuarioId}")]
-        public IActionResult DeleteStudent(int UsuarioId)
+        [HttpDelete("{StudentId}")]
+        public IActionResult DeleteStudent(Guid studentId)
         {
-            if (UserExists(UsuarioId))
+            if (UserExists(studentId))
             {
-                _studentServices.DeleteStudent(UsuarioId);
+                _studentServices.DeleteStudent(studentId);
                 return NoContent();
             }
             else
@@ -72,9 +72,9 @@ namespace Group3.Controllers
             }
         }
 
-        private bool UserExists(int id)
+        private bool UserExists(Guid studentId)
         {
-            return _studentServices.GetStudent().Any(e => e.UsuarioId == id);
+            return _studentServices.GetStudent().Any(e => e.StudentId == studentId);
         }
     }
 }
