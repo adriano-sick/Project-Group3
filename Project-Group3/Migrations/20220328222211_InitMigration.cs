@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Project_Group3.Migrations
 {
-    public partial class autoguid : Migration
+    public partial class InitMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,10 +40,7 @@ namespace Project_Group3.Migrations
                     QuestionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     QuestionEnunciado = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    QuestionIncorreta1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    QuestionIncorreta2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    QuestionIncorreta3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    QuestionCorreta = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    QuestionCorreta = table.Column<bool>(type: "bit", nullable: false),
                     AvaliacaoId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
