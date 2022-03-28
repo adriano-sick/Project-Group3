@@ -79,19 +79,10 @@ namespace Project_Group3.Migrations
                     b.Property<int?>("AvaliacaoId")
                         .HasColumnType("int");
 
-                    b.Property<string>("QuestionCorreta")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("QuestionCorreta")
+                        .HasColumnType("bit");
 
                     b.Property<string>("QuestionEnunciado")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("QuestionIncorreta1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("QuestionIncorreta2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("QuestionIncorreta3")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("QuestionId");

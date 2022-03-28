@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Project_Group3.Migrations
 {
     [DbContext(typeof(EntitiesContext))]
-    [Migration("20220328130837_autoguid")]
-    partial class autoguid
+    [Migration("20220328222211_InitMigration")]
+    partial class InitMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -81,19 +81,10 @@ namespace Project_Group3.Migrations
                     b.Property<int?>("AvaliacaoId")
                         .HasColumnType("int");
 
-                    b.Property<string>("QuestionCorreta")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("QuestionCorreta")
+                        .HasColumnType("bit");
 
                     b.Property<string>("QuestionEnunciado")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("QuestionIncorreta1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("QuestionIncorreta2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("QuestionIncorreta3")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("QuestionId");
