@@ -34,7 +34,7 @@ namespace Project_Group3.Controllers
         }
 
         // PUT: /Discipline/DisciplineId
-        [HttpPut("{DisciplineId}")]
+        [HttpPut("{DisciplinaId}")]
         public async Task<IActionResult> PutDiscipline(int DisciplinaId, Discipline discipline)
         {
             if (DisciplinaId != discipline.DisciplinaId)
@@ -50,7 +50,7 @@ namespace Project_Group3.Controllers
 
 
         // DELETE: /Discipline/DisciplineId
-        [HttpDelete("{DisciplineId}")]
+        [HttpDelete("{DisciplinaId}")]
         public IActionResult DeleteDiscipline(int DisciplinaId)
         {
             if (DisciplineExists(DisciplinaId))
