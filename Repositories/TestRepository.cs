@@ -2,30 +2,35 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Repositories
+namespace Group3.Repositories
 {
-    public class DisciplineRepository
+    public class TestRepository
     {
         private readonly EntitiesContext _entitiesContext;
 
-        public DisciplineRepository()
+        public TestRepository()
         {
             _entitiesContext = new EntitiesContext();
         }
 
-        public List<Discipline> GetDisciplines()
+        public Test Get(Guid id)
         {
-            return _entitiesContext.Discipline.ToList();
+            var test = _entitiesContext.Test.ToList();
+            return test.Where(x => x.TestId == id).FirstOrDefault();
         }
 
-        public async Task<Discipline> AddDiscipline(Discipline discipline)
+        public List<Test> Get()
+        {
+            return _entitiesContext.Test.ToList();
+        }
+
+        public async Task<Test> Add(Test test)
         {
             try
             {
-                var result = await _entitiesContext.AddAsync(discipline);
+                var result = await _entitiesContext.AddAsync(test);
                 await _entitiesContext.SaveChangesAsync();
 
                 return result.Entity;
@@ -37,27 +42,27 @@ namespace Repositories
             }
         }
 
-        public async Task<Discipline> UpdateDiscipline(Discipline discipline)
+        public async Task<Test> Update(Test test)
         {
             try
             {
-                var result = _entitiesContext.Update(discipline);
+                var result = _entitiesContext.Update(test);
                 await _entitiesContext.SaveChangesAsync();
                 return result.Entity;
             }
             catch (Exception e)
             {
-                Console.Error.WriteLine("Error while updating changes: " + e);
+                Console.Error.WriteLine("Deu Ruim! -> Erro while trying to save changes. Error: " + e);
                 return null;
             }
         }
 
-        public Discipline DeleteDiscipline(int DisciplinaId)
+        public Test Delete(Guid id)
         {
-            var disciplineDel = _entitiesContext.Discipline.FirstOrDefault(a => a.DisciplinaId == DisciplinaId);
-            _entitiesContext.Remove(disciplineDel);
+            var testDel = _entitiesContext.Test.FirstOrDefault(a => a.TestId == id);
+            _entitiesContext.Remove(testDel);
             _entitiesContext.SaveChangesAsync();
-            return disciplineDel;
+            return testDel;
         }
     }
 }

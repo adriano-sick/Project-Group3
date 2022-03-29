@@ -1,10 +1,9 @@
 ﻿using Group3.Entities;
 using Group3.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Services;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Group3.Controllers
@@ -22,52 +21,49 @@ namespace Group3.Controllers
 
         // GET: /User
         [HttpGet]
-        public Tuple<List<Student>, List<Professor>> GetStudentContexts()
+        [Authorize]
+        public List<User> Get()
         {
-            return _userServices.GetUsers();
+            return _userServices.Get();
         }
 
         //POST: /User
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User User)
+        public async Task<ActionResult<User>> Post(User User)
         {
-            return await _userServices.AddUser(User);
+            return await _userServices.Add(User);
         }
 
         // PUT: /User/UserId
         [HttpPut("{UserId}")]
-        public async Task<IActionResult> PutUser(int UserId, User user)
+        [Authorize(Roles = "professor")]
+        public async Task<IActionResult> Put(Guid UserId, User user)
         {
-            if (UserId != user.UsuarioId)
+            if (UserId != user.UserId)
             {
                 return BadRequest();
             }
             else
             {
-                await _userServices.UpdateUser(user);
+                await _userServices.Update(user);
                 return Ok();
             }
         }
 
-
         // DELETE: /User/UserId
         [HttpDelete("{id}")]
-        public IActionResult DeleteUser(int id)
+        [Authorize(Roles = "professor")]
+        public IActionResult Delete(Guid id)
         {
-            if (UserExists(id))
+            if (_userServices.UserExists(id))
             {
-                _userServices.DeleteUser(id);
+                _userServices.Delete(id);
                 return NoContent();
             }
             else
             {
                 return NotFound();
             }
-        }
-
-        private bool UserExists(int id)
-        {
-            return (_userServices.GetUsers().Item1.Any(e => e.UsuarioId == id) || _userServices.GetUsers().Item2.Any(e => e.UsuarioId == id));
         }
     }
 }

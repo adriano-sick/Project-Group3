@@ -6,31 +6,31 @@ using System.Threading.Tasks;
 
 namespace Group3.Repositories
 {
-    public class UserRepository
+    public class AlternativeRepository
     {
         private readonly EntitiesContext _entitiesContext;
 
-        public UserRepository()
+        public AlternativeRepository()
         {
             _entitiesContext = new EntitiesContext();
         }
 
-        public User Get(string email, string password)
+        public Alternative Get(Guid id)
         {
-            var users = _entitiesContext.User.ToList();
-            return users.Where(x => x.Email.ToLower() == email.ToLower() && x.Password == password).FirstOrDefault();
+            var alternative = _entitiesContext.Alternative.ToList();
+            return alternative.Where(x => x.AlternativeId == id).FirstOrDefault();
         }
 
-        public List<User> Get()
+        public List<Alternative> Get()
         {
-            return _entitiesContext.User.ToList();
+            return _entitiesContext.Alternative.ToList();
         }
 
-        public async Task<User> Add(User user)
+        public async Task<Alternative> Add(Alternative alternative)
         {
             try
             {
-                var result = await _entitiesContext.AddAsync(user);
+                var result = await _entitiesContext.AddAsync(alternative);
                 await _entitiesContext.SaveChangesAsync();
 
                 return result.Entity;
@@ -42,11 +42,11 @@ namespace Group3.Repositories
             }
         }
 
-        public async Task<User> Update(User user)
+        public async Task<Alternative> Update(Alternative alternative)
         {
             try
             {
-                var result = _entitiesContext.Update(user);
+                var result = _entitiesContext.Update(alternative);
                 await _entitiesContext.SaveChangesAsync();
                 return result.Entity;
             }
@@ -57,12 +57,12 @@ namespace Group3.Repositories
             }
         }
 
-        public User Delete(Guid id)
+        public Alternative Delete(Guid id)
         {
-            var userDel = _entitiesContext.User.FirstOrDefault(a => a.UserId == id);
-            _entitiesContext.Remove(userDel);
+            var alternativeDel = _entitiesContext.Alternative.FirstOrDefault(a => a.AlternativeId == id);
+            _entitiesContext.Remove(alternativeDel);
             _entitiesContext.SaveChangesAsync();
-            return userDel;
+            return alternativeDel;
         }
     }
 }

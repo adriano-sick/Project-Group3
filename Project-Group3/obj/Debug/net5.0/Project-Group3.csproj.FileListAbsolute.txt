@@ -143,3 +143,4 @@ C:\Users\covid\Desktop\Group3-Project\Project-Group3\obj\Debug\net5.0\Project-Gr
 C:\Users\covid\Desktop\Group3-Project\Project-Group3\obj\Debug\net5.0\ref\Project-Group3.dll
 C:\Users\covid\Desktop\Group3-Project\Project-Group3\obj\Debug\net5.0\Project-Group3.pdb
 C:\Users\covid\Desktop\Group3-Project\Project-Group3\obj\Debug\net5.0\Project-Group3.genruntimeconfig.cache
+C:\Users\covid\Desktop\Group3-Project\Project-Group3\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

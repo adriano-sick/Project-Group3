@@ -10,55 +10,55 @@ namespace Group3.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class QuestionController : ControllerBase
+    public class TestController : ControllerBase
     {
-        private readonly QuestionServices _questionServices;
+        private readonly TestServices _testServices;
 
-        public QuestionController()
+        public TestController()
         {
-            _questionServices = new QuestionServices();
+            _testServices = new TestServices();
         }
 
-        // GET: /Question
+        // GET: /Test
         [HttpGet]
-        [Authorize(Roles = "professor")]
-        public List<Question> Get()
+        [Authorize(Roles = "professor,student")]
+        public List<Test> Get()
         {
-            return _questionServices.Get();
+            return _testServices.Get();
         }
 
-        //POST: /Question
+        //POST: /Test
         [HttpPost]
         [Authorize(Roles = "professor")]
-        public async Task<ActionResult<Question>> Post(Question question)
+        public async Task<ActionResult<Test>> Post(Test test)
         {
-            return await _questionServices.Add(question);
+            return await _testServices.Add(test);
         }
 
-        // PUT: /Question/QuestionId
-        [HttpPut("{Id}")]
+        // PUT: /Test/TestId
+        [HttpPut("{id}")]
         [Authorize(Roles = "professor")]
-        public async Task<IActionResult> Put(Guid id, Question question)
+        public async Task<IActionResult> Put(Guid id, Test test)
         {
-            if (id != question.QuestionId)
+            if (id != test.TestId)
             {
                 return BadRequest();
             }
             else
             {
-                await _questionServices.Update(question);
+                await _testServices.Update(test);
                 return Ok();
             }
         }
 
-        // DELETE: /Question/QuestionId
+        // DELETE: /Test/TestId
         [HttpDelete("{id}")]
         [Authorize(Roles = "professor")]
         public IActionResult Delete(Guid id)
         {
-            if (_questionServices.QuestionExists(id))
+            if (_testServices.TestExists(id))
             {
-                _questionServices.Delete(id);
+                _testServices.Delete(id);
                 return NoContent();
             }
             else

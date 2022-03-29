@@ -4,15 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Group3.Entities
 {
-    public class Question
+    public class Alternative
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid QuestionId { get; set; }
-        public string Title { get; set; }
-        [ForeignKey("TestId")]
-        public Test Test { get; set; }
+        public Guid AlternativeId { get; set; }
+        public string Text { get; set; }
+        public bool IsCorrect { get; set; }
         [ForeignKey("UserId")]
         public User User { get; set; }
+        [ForeignKey("QuestionId")]
+        public Question Question { get; set; }
     }
 }

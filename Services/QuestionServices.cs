@@ -1,10 +1,12 @@
 ﻿using Group3.Entities;
-using Repositories;
+using Group3.Repositories;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
-namespace Services
+namespace Group3.Services
 {
     public class QuestionServices
     {
@@ -15,12 +17,11 @@ namespace Services
             _questionRepository = new QuestionRepository();
         }
 
-        public List<Question> GetQuestions()
+        public Question Get(Guid id)
         {
             try
             {
-                var list = _questionRepository.GetQuestions();
-                return list;
+                return _questionRepository.Get(id);
             }
             catch (Exception)
             {
@@ -28,19 +29,31 @@ namespace Services
             }
         }
 
-        public async Task<Question> AddQuestion(Question question)
+        public List<Question> Get()
         {
-            return await _questionRepository.AddQuestion(question);
+            return _questionRepository.Get();
         }
 
-        public async Task<Question> UpdateQuestion(Question question)
+        public async Task<ActionResult<Question>> Add(Question question)
         {
-            return await _questionRepository.UpdateQuestion(question);
+            return await _questionRepository.Add(question);
+
         }
 
-        public Question DeleteQuestion(int QuestionId)
+        public async Task<Question> Update(Question question)
         {
-            return _questionRepository.DeleteQuestion(QuestionId);
+            return await _questionRepository.Update(question);
+        }
+
+        public Question Delete(Guid id)
+        {
+
+            return _questionRepository.Delete(id);
+        }
+
+        public bool QuestionExists(Guid id)
+        {
+            return _questionRepository.Get().Any(e => e.QuestionId == id);
         }
     }
 }

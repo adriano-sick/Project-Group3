@@ -1,116 +1,59 @@
 ﻿using Group3.Entities;
-using Group3.Services;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Repositories;
+using System.Collections.Generic;
+using Group3.Repositories;
 
-namespace Services
+namespace Group3.Services
 {
     public class UserServices
     {
-        private readonly StudentServices _studentServices;
-        private readonly ProfessorServices _professorService;
         private readonly UserRepository _userRepository;
 
         public UserServices()
         {
-            _studentServices = new StudentServices();
-            _professorService = new ProfessorServices();
             _userRepository = new UserRepository();
         }
 
-        public Tuple<List<Student>, List<Professor>> GetUsers()
+        public User Get(string email, string password)
         {            
             try
             {
-                var studentList = _studentServices.GetStudent();
-                var professorList = _professorService.GetProfessor();
-                return new Tuple<List<Student>, List<Professor>>(studentList, professorList);
+                return _userRepository.Get(email, password);
             }
             catch (Exception)
             {
-                return new Tuple<List<Student>, List<Professor>>(new List<Student>(), new List<Professor>());
+                return new();
             }
         }
 
-        public async Task<ActionResult<User>> AddUser(User User)
+        public List<User> Get()
         {
-            if (User.Ocupacao == "student")
-            {
-                Student Student = new()
-                {
-                    Nome = User.Nome,
-                    Senha = User.Senha,
-                    Email = User.Email,
-                    DataNasc = User.DataNasc,
-                    Endereco = User.Endereco,
-                    Numero = User.Numero,
-                    Bairro = User.Bairro,
-                    Cidade = User.Cidade,
-                    Estado = User.Estado,
-                    Cep = User.Cep,
-                    Ocupacao = User.Ocupacao
-                };
+            return _userRepository.Get();
+        }
 
-                if (!UserExists(User.UsuarioId))
-                {
-                    return await _studentServices.AddStudent(Student);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else if (User.Ocupacao == "professor")
-            {
-                Professor Professor = new()
-                {
-                    Nome = User.Nome,
-                    Senha = User.Senha,
-                    Email = User.Email,
-                    DataNasc = User.DataNasc,
-                    Endereco = User.Endereco,
-                    Numero = User.Numero,
-                    Bairro = User.Bairro,
-                    Cidade = User.Cidade,
-                    Estado = User.Estado,
-                    Cep = User.Cep,
-                    Ocupacao = User.Ocupacao
-                };
-
-                if (!UserExists(User.UsuarioId))
-                {
-                    return await _professorService.AddProfessor(Professor);
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return null;
-            }
+        public async Task<ActionResult<User>> Add(User User)
+        {
+            return await _userRepository.Add(User);
 
         }
 
-        public async Task<User> UpdateUser(User user)
+        public async Task<User> Update(User user)
         {
-            return await _userRepository.UpdateUser(user);
+            return await _userRepository.Update(user);
         }
 
-        public User DeleteUser(int userId)
+        public User Delete(Guid id)
         {
 
-            return _userRepository.DeleteUser(userId);
+            return _userRepository.Delete(id);
         }
 
-        private bool UserExists(int id)
+        public bool UserExists(Guid id)
         {
-            return _studentServices.GetStudent().Any(e => e.UsuarioId == id);
+            return _userRepository.Get().Any(e => e.UserId == id);
         }
     }
 }
