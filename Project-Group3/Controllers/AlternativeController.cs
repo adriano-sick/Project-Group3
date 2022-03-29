@@ -37,7 +37,7 @@ namespace Group3.Controllers
         }
 
         // PUT: /Alternative/AlternativeId
-        [HttpPut("{AlternativeId}")]
+        [HttpPut("{id}")]
         [Authorize(Roles = "professor,administrator")]
         public async Task<IActionResult> Put(Guid id, Alternative alternative)
         {
