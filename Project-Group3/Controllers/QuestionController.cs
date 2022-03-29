@@ -21,7 +21,7 @@ namespace Group3.Controllers
 
         // GET: /Question
         [HttpGet]
-        [Authorize(Roles = "professor")]
+        [Authorize(Roles = "professor,administrator,student")]
         public List<Question> Get()
         {
             return _questionServices.Get();
@@ -29,7 +29,7 @@ namespace Group3.Controllers
 
         //POST: /Question
         [HttpPost]
-        [Authorize(Roles = "professor")]
+        [Authorize(Roles = "professor,administrator")]
         public async Task<ActionResult<Question>> Post(Question question)
         {
             return await _questionServices.Add(question);
@@ -37,7 +37,7 @@ namespace Group3.Controllers
 
         // PUT: /Question/QuestionId
         [HttpPut("{Id}")]
-        [Authorize(Roles = "professor")]
+        [Authorize(Roles = "professor,administrator")]
         public async Task<IActionResult> Put(Guid id, Question question)
         {
             if (id != question.QuestionId)
@@ -53,7 +53,7 @@ namespace Group3.Controllers
 
         // DELETE: /Question/QuestionId
         [HttpDelete("{id}")]
-        [Authorize(Roles = "professor")]
+        [Authorize(Roles = "professor,administrator")]
         public IActionResult Delete(Guid id)
         {
             if (_questionServices.QuestionExists(id))

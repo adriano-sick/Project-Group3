@@ -1,5 +1,6 @@
 ﻿using Group3.Entities;
 using Group3.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,6 +22,7 @@ namespace Group3.Controllers
 
         // GET: /Alternative
         [HttpGet]
+        [Authorize(Roles = "professor,administrator,student")]
         public List<Alternative> Get()
         {
             return _alternativeServices.Get();
@@ -28,6 +30,7 @@ namespace Group3.Controllers
 
         //POST: /Alternative
         [HttpPost]
+        [Authorize(Roles = "professor,administrator")]
         public async Task<ActionResult<Alternative>> Post(Alternative alternative)
         {
             return await _alternativeServices.Add(alternative);
@@ -35,6 +38,7 @@ namespace Group3.Controllers
 
         // PUT: /Alternative/AlternativeId
         [HttpPut("{AlternativeId}")]
+        [Authorize(Roles = "professor,administrator")]
         public async Task<IActionResult> Put(Guid id, Alternative alternative)
         {
             if (id != alternative.AlternativeId)
@@ -51,6 +55,7 @@ namespace Group3.Controllers
 
         // DELETE: /Alternative/AlternativeId
         [HttpDelete("{id}")]
+        [Authorize(Roles = "professor,administrator")]
         public IActionResult Delete(Guid id)
         {
             if (_alternativeServices.AlternativeExists(id))
