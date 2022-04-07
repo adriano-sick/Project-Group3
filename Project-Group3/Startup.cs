@@ -41,7 +41,6 @@ namespace Project_Group3
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
-                //.AllowCredentials());
             });
 
 
