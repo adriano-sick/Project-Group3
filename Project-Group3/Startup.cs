@@ -30,15 +30,13 @@ namespace Project_Group3
         {
             services.AddCors(options =>
             {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
-                                  policy =>
-                                  {
-                                      //policy.WithOrigins("http://localhost:8081/", "*");
-                                      policy.AllowAnyOrigin();
-                                      policy.AllowAnyMethod();
-                                      policy.AllowAnyHeader();
-                                  });
+                options.AddPolicy("CorsPolicy", builder => builder
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials());
             });
+            
 
             //services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -47,14 +45,6 @@ namespace Project_Group3
             });
 
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("CorsPolicy", builder => builder
-            //    .AllowAnyMethod()
-            //    .AllowAnyHeader()
-            //    .SetIsOriginAllowed(origin => true) // allow any origin
-            //    .AllowCredentials());
-            //});
 
             services.AddControllers();
 
