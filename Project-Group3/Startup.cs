@@ -2,6 +2,7 @@ using Group3.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,7 +33,19 @@ namespace Project_Group3
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Project_Group3", Version = "v1" });
             });
 
-            services.AddCors();
+            //services.AddCors();
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder => builder
+                //.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
+            });
+
+
+
             services.AddControllers();
 
             //var key = Encoding.ASCII.GetBytes(Configuration.GetSection("SecretToken").ToString());
@@ -74,6 +87,9 @@ namespace Project_Group3
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Project_Group3 v1"));
             }
+
+            app.UseCors("CorsPolicy");
+            //app.UseMvc();
 
             app.UseHttpsRedirection();
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mABARgCEU9y/GsB1w/odXcRZbRXP2l0hs/H1atIPPP1PjIikMAGqLDIpiApe8rjtS2Dfsot2hsnbWsemDC0ZBg==",
+  "dgSpecHash": "YkQM1RKoGefZw+uyVBV+H2gXeofEfJtFPISTWih32K6gkfjwipOB8wNyeGAOZ0sraBxKY2XyY0ie+iEplCgYmA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\covid\\Desktop\\Group3-Project\\Entities\\Entities.csproj",
+  "projectFilePath": "C:\\Users\\covid\\Source\\Repos\\adriano-sick\\Project-Group3\\Entities\\Entities.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\covid\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\covid\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

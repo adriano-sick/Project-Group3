@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\covid\\Desktop\\Group3-Project\\Entities\\Entities.csproj": {}
+    "C:\\Users\\covid\\Source\\Repos\\adriano-sick\\Project-Group3\\Entities\\Entities.csproj": {}
   },
   "projects": {
-    "C:\\Users\\covid\\Desktop\\Group3-Project\\Entities\\Entities.csproj": {
+    "C:\\Users\\covid\\Source\\Repos\\adriano-sick\\Project-Group3\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\covid\\Desktop\\Group3-Project\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\covid\\Source\\Repos\\adriano-sick\\Project-Group3\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\covid\\Desktop\\Group3-Project\\Entities\\Entities.csproj",
+        "projectPath": "C:\\Users\\covid\\Source\\Repos\\adriano-sick\\Project-Group3\\Entities\\Entities.csproj",
         "packagesPath": "C:\\Users\\covid\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\covid\\Desktop\\Group3-Project\\Entities\\obj\\",
+        "outputPath": "C:\\Users\\covid\\Source\\Repos\\adriano-sick\\Project-Group3\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

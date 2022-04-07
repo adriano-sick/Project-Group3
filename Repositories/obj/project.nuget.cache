@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6rcAieyyZfscKQc2nhVwTSQ7bh8N2xaUck5C8u+4YFPZbezUn2T1ATvc8XLtaCUaABfvwGABvY87/05SVdY2MA==",
+  "dgSpecHash": "eZCWnoMS9dazWW7Cg/zkr2tdN5HQAoOOu7LN2XAsPjs0HXbEud0Xr2SV2nexJ4eX89hPnzE3zx719ALK6zPV3w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\covid\\Desktop\\Group3-Project\\Repositories\\Repositories.csproj",
+  "projectFilePath": "C:\\Users\\covid\\Source\\Repos\\adriano-sick\\Project-Group3\\Repositories\\Repositories.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\covid\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\covid\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
