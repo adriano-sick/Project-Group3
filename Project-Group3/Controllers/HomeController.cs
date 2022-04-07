@@ -1,7 +1,6 @@
 ﻿using Group3.Entities;
 using Group3.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -14,7 +13,6 @@ namespace Group3.Controllers
     {
         readonly UserServices _userServices = new();
 
-        [EnableCors("CorsPolicy")]
         [HttpPost]
         [Route("login")]
         public async Task<ActionResult<dynamic>> Authenticate([FromBody] User model)

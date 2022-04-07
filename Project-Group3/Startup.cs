@@ -16,6 +16,8 @@ namespace Project_Group3
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "CorsPolicy";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,23 +28,31 @@ namespace Project_Group3
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  policy =>
+                                  {
+                                      policy.WithOrigins("http://example.com",
+                                                          "http://www.contoso.com");
+                                  });
+            });
 
-            services.AddControllers();
+            //services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Project_Group3", Version = "v1" });
             });
 
-            //services.AddCors();
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy", builder => builder
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true) // allow any origin
-                .AllowCredentials());
-            });
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("CorsPolicy", builder => builder
+            //    .AllowAnyMethod()
+            //    .AllowAnyHeader()
+            //    .SetIsOriginAllowed(origin => true) // allow any origin
+            //    .AllowCredentials());
+            //});
 
             services.AddControllers();
 
@@ -76,8 +86,6 @@ namespace Project_Group3
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseAuthentication();
-            app.UseAuthorization();
 
             if (env.IsDevelopment())
             {
@@ -87,6 +95,8 @@ namespace Project_Group3
             }
 
             app.UseCors("CorsPolicy");
+            app.UseAuthentication();
+            //app.UseAuthorization();
             //app.UseMvc();
 
             app.UseHttpsRedirection();
