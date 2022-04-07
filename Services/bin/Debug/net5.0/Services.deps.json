@@ -9,6 +9,7 @@
       "Services/1.0.0": {
         "dependencies": {
           "Entities": "1.0.0",
+          "Microsoft.AspNetCore.Cors": "2.2.0",
           "Microsoft.AspNetCore.Mvc": "2.2.0",
           "Microsoft.EntityFrameworkCore.Design": "5.0.11",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
@@ -2500,6 +2501,7 @@
       },
       "Entities/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Cors": "2.2.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.2"
         },
@@ -2510,6 +2512,7 @@
       "Repositories/1.0.0": {
         "dependencies": {
           "Entities": "1.0.0",
+          "Microsoft.AspNetCore.Cors": "2.2.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.2"
         },

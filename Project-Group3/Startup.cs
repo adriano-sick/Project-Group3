@@ -38,12 +38,11 @@ namespace Project_Group3
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder => builder
-                .AllowAnyOrigin()
                 .AllowAnyMethod()
-                .AllowAnyHeader());
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials());
             });
-
-
 
             services.AddControllers();
 
