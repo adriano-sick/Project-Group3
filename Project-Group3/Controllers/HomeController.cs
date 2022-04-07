@@ -30,6 +30,7 @@ namespace Group3.Controllers
             // Oculta a senha
             user.Password = "";
 
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             // Retorna os dados
             return new
             {
