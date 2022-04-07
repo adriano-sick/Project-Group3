@@ -33,8 +33,8 @@ namespace Project_Group3
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                   policy =>
                                   {
-                                      policy.WithOrigins("http://example.com",
-                                                          "http://www.contoso.com");
+                                      policy.WithOrigins("http://localhost:8081/",
+                                                          "*");
                                   });
             });
 
