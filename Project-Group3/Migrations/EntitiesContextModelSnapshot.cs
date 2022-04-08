@@ -72,9 +72,6 @@ namespace Project_Group3.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("TestId");
 
                     b.ToTable("Test");
