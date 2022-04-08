@@ -36,7 +36,7 @@ namespace Project_Group3
                 .SetIsOriginAllowed(origin => true) // allow any origin
                 .AllowCredentials());
             });
-            
+
 
             //services.AddControllers();
             services.AddSwaggerGen(c =>
