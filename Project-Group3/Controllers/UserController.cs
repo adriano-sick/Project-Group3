@@ -28,6 +28,15 @@ namespace Group3.Controllers
             return _userServices.Get();
         }
 
+        // GET: /User/role
+        [HttpGet("{role}")]
+        [Authorize]
+        [Authorize(Roles = "professor,administrator")]
+        public List<User> Get(string role)
+        {
+            return _userServices.Get();
+        }
+
         //POST: /User
         [HttpPost]
         [Authorize(Roles = "administrator")]

@@ -15,10 +15,16 @@ namespace Group3.Repositories
             _entitiesContext = new EntitiesContext();
         }
 
-        public Test Get(Guid id)
+        //public Test Get(Guid id)
+        //{
+        //    var test = _entitiesContext.Test.ToList();
+        //    return test.Where(x => x.TestId == id).FirstOrDefault();
+        //}
+
+        public List<Test> Get(Guid UserId)
         {
             var test = _entitiesContext.Test.ToList();
-            return test.Where(x => x.TestId == id).FirstOrDefault();
+            return test.Where(x => x.UserId == UserId).ToList();
         }
 
         public List<Test> Get()

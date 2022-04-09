@@ -29,6 +29,11 @@ namespace Group3.Services
             }
         }
 
+        public List<User> Get(string role)
+        {
+            return _userRepository.Get(role);
+        }
+
         public List<User> Get()
         {
             return _userRepository.Get();

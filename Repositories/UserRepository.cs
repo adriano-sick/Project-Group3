@@ -21,6 +21,12 @@ namespace Group3.Repositories
             return users.Where(x => x.Email.ToLower() == email.ToLower() && x.Password == password).FirstOrDefault();
         }
 
+        public List<User> Get(string role)
+        {
+            var users = _entitiesContext.User.ToList();
+            return users.Where(x => x.Role.ToLower() == role.ToLower()).ToList();
+        }
+
         public List<User> Get()
         {
             return _entitiesContext.User.ToList();

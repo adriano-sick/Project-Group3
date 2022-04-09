@@ -17,11 +17,11 @@ namespace Group3.Services
             _testRepository = new TestRepository();
         }
 
-        public Test Get(Guid id)
+        public List<Test> Get(Guid UserId)
         {
             try
             {
-                return _testRepository.Get(id);
+                return _testRepository.Get(UserId);
             }
             catch (Exception)
             {
