@@ -88,8 +88,6 @@ namespace Project_Group3
 
             app.UseCors("CorsPolicy");
             app.UseAuthentication();
-            //app.UseAuthorization();
-            //app.UseMvc();
 
             app.UseHttpsRedirection();
 

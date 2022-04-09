@@ -27,6 +27,14 @@ namespace Group3.Controllers
             return _questionServices.Get();
         }
 
+        // GET: /Question/TestId
+        [HttpGet("{testId}")]
+        [Authorize(Roles = "professor,administrator,student")]
+        public List<Question> Get(Guid testId)
+        {
+            return _questionServices.Get();
+        }
+
         //POST: /Question
         [HttpPost]
         [Authorize(Roles = "professor,administrator")]

@@ -17,11 +17,11 @@ namespace Group3.Services
             _questionRepository = new QuestionRepository();
         }
 
-        public Question Get(Guid id)
+        public List<Question> Get(Guid testId)
         {
             try
             {
-                return _questionRepository.Get(id);
+                return _questionRepository.Get(testId);
             }
             catch (Exception)
             {
