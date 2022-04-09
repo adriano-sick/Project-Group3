@@ -32,7 +32,7 @@ namespace Group3.Controllers
         [Authorize(Roles = "professor,student,administrator")]
         public List<Test> Get(Guid userId)
         {
-            return _testServices.Get();
+            return _testServices.Get(userId);
         }
 
         //POST: /Test
