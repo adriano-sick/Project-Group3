@@ -39,7 +39,7 @@ namespace Group3.Controllers
 
         //POST: /User
         [HttpPost]
-        //[Authorize(Roles = "administrator")]
+        [Authorize(Roles = "administrator")]
         public async Task<ActionResult<User>> Post(User User)
         {
             return await _userServices.Add(User);
