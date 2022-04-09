@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Project_Group3.Migrations
 {
     [DbContext(typeof(EntitiesContext))]
-    [Migration("20220408225640_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220409114211_IntMigratin")]
+    partial class IntMigratin
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,15 +30,13 @@ namespace Project_Group3.Migrations
                     b.Property<bool>("IsCorrect")
                         .HasColumnType("bit");
 
-                    b.Property<Guid?>("QuestionId")
+                    b.Property<Guid>("QuestionId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("AlternativeId");
-
-                    b.HasIndex("QuestionId");
 
                     b.ToTable("Alternative");
                 });
@@ -49,15 +47,13 @@ namespace Project_Group3.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("TestId")
+                    b.Property<Guid>("TestId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("QuestionId");
-
-                    b.HasIndex("TestId");
 
                     b.ToTable("Question");
                 });
@@ -100,24 +96,6 @@ namespace Project_Group3.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("Group3.Entities.Alternative", b =>
-                {
-                    b.HasOne("Group3.Entities.Question", "Question")
-                        .WithMany()
-                        .HasForeignKey("QuestionId");
-
-                    b.Navigation("Question");
-                });
-
-            modelBuilder.Entity("Group3.Entities.Question", b =>
-                {
-                    b.HasOne("Group3.Entities.Test", "Test")
-                        .WithMany()
-                        .HasForeignKey("TestId");
-
-                    b.Navigation("Test");
                 });
 #pragma warning restore 612, 618
         }
