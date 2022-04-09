@@ -11,8 +11,6 @@ namespace Group3.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid TestId { get; set; }
         public String Name { get; set; }
-        public String Grade { get; set; }
-        [ForeignKey("QuestionId")]
-        public List<Question> Questions { get; set; }        
+        public String Grade { get; set; }   
     }
 }

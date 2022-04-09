@@ -68,11 +68,11 @@ namespace Project_Group3
                 };
             });
 
-            services.AddDbContext<EntitiesContext>(item => item.UseSqlServer(
-                Configuration.GetConnectionString("StudentConnection"),
-                b => b.MigrationsAssembly("Project-Group3")));
+            //services.AddDbContext<EntitiesContext>(item => item.UseSqlServer(
+            //    Configuration.GetConnectionString("StudentConnection"),
+            //    b => b.MigrationsAssembly("Project-Group3")));
 
-            //services.AddDbContext<UserContext>(options => options.UseSqlServer(Configuration.GetConnectionString("StudentConnection")));
+            services.AddDbContext<EntitiesContext>(options => options.UseSqlServer(Configuration.GetConnectionString(Environment.GetEnvironmentVariable("Production"))));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -11,8 +11,6 @@ namespace Group3.Entities
         public Guid QuestionId { get; set; }
         public string Title { get; set; }
         [ForeignKey("TestId")]
-        public Test Test { get; set; }
-        [ForeignKey("UserId")]
-        public User User { get; set; }
+        public Guid TestId { get; set; }
     }
 }

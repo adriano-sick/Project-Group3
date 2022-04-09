@@ -17,11 +17,11 @@ namespace Group3.Services
             _alternativeRepository = new AlternativeRepository();
         }
 
-        public Alternative Get(Guid id)
+        public List<Alternative> Get(Guid questionId)
         {
             try
             {
-                return _alternativeRepository.Get(id);
+                return _alternativeRepository.Get(questionId);
             }
             catch (Exception)
             {

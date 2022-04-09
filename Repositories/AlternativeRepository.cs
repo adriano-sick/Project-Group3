@@ -15,10 +15,10 @@ namespace Group3.Repositories
             _entitiesContext = new EntitiesContext();
         }
 
-        public Alternative Get(Guid id)
+        public List<Alternative> Get(Guid questionid)
         {
             var alternative = _entitiesContext.Alternative.ToList();
-            return alternative.Where(x => x.AlternativeId == id).FirstOrDefault();
+            return alternative.Where(x => x.QuestionId == questionid).ToList();
         }
 
         public List<Alternative> Get()

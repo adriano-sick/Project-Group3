@@ -28,6 +28,14 @@ namespace Group3.Controllers
             return _alternativeServices.Get();
         }
 
+        // GET: /Alternative/questionId
+        [HttpGet("{questionId}")]
+        [Authorize(Roles = "professor,administrator,student")]
+        public List<Alternative> Get(Guid questionId)
+        {
+            return _alternativeServices.Get(questionId);
+        }
+
         //POST: /Alternative
         [HttpPost]
         [Authorize(Roles = "professor,administrator")]
