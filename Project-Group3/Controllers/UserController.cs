@@ -34,7 +34,7 @@ namespace Group3.Controllers
         [Authorize(Roles = "professor,administrator")]
         public List<User> Get(string role)
         {
-            return _userServices.Get();
+            return _userServices.Get(role);
         }
 
         //POST: /User
